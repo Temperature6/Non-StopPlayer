@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 {
     int temp = CoInitialize(NULL);
     char exe_file[150];
-    //»ñµÃµ±Ç°Ä¿Â¼
+    //è·å¾—å½“å‰ç›®å½•
     char current_path[100];
     GetModuleFileName(NULL, current_path, 100);
     for (int i = sizeof(current_path) - 1; i >= 0; i--)
@@ -33,17 +33,17 @@ int main(int argc, char* argv[])
             current_path[i] = '\0';
         }
     }
-    cout << "»ñµÃµ±Ç°¹¤×÷Ä¿Â¼:" << current_path << endl;
+    cout << "è·å¾—å½“å‰å·¥ä½œç›®å½•:" << current_path << endl;
     memccpy(exe_file, current_path, 0, 100);
 
-    //»ñµÃ×ÀÃæÂ·¾¶
+    //è·å¾—æ¡Œé¢è·¯å¾„
     LPITEMIDLIST ppidl;
     char desktop_path[500];
     HRESULT Desk_P = SHGetSpecialFolderLocation(NULL, CSIDL_DESKTOP, &ppidl);
-    SHGetPathFromIDList(ppidl, desktop_path); //×ª×Ö·û´®
-    cout << "»ñµÃ±¾»ú×ÀÃæÂ·¾¶:" << desktop_path << endl;
+    SHGetPathFromIDList(ppidl, desktop_path); //è½¬å­—ç¬¦ä¸²
+    cout << "è·å¾—æœ¬æœºæ¡Œé¢è·¯å¾„:" << desktop_path << endl;
 
-    //´´½¨¿ì½İ·½Ê½
+    //åˆ›å»ºå¿«æ·æ–¹å¼
     HRESULT hr;
     IShellLink* pLink;
     IPersistFile* ppf;
@@ -53,27 +53,27 @@ int main(int argc, char* argv[])
     
     strcat(exe_file, exeName);
     pLink->SetPath(exe_file);
-    cout << "Ä¿±ê:" << exe_file << endl;
+    cout << "ç›®æ ‡:" << exe_file << endl;
 
     pLink->SetWorkingDirectory(current_path);
-    cout << "¹¤×÷Ä¿Â¼:" << current_path << endl;
+    cout << "å·¥ä½œç›®å½•:" << current_path << endl;
 
-    pLink->SetDescription("ÈçÏ£Íû½áÊøÓ¦ÓÃ³ÌĞò£¬ÖØÆôµçÄÔ»òÕßÔÚÈÎÎñ¹ÜÀíÆ÷ÖĞµ¥»÷Ñ¡ÖĞ¡°Non-StopPlayer.exe¡±²¢µ¥»÷¡°½áÊøÈÎÎñ¡±");
-    cout << "ÃèÊö:Çë´ò¿ª¿ì½İ·½Ê½ÊôĞÔÒ³²é¿´" << endl;
+    pLink->SetDescription("å¦‚å¸Œæœ›ç»“æŸåº”ç”¨ç¨‹åºï¼Œé‡å¯ç”µè„‘æˆ–è€…åœ¨ä»»åŠ¡ç®¡ç†å™¨ä¸­å•å‡»é€‰ä¸­â€œPlayer.exeâ€å¹¶å•å‡»â€œç»“æŸä»»åŠ¡â€");
+    cout << "æè¿°:è¯·æ‰“å¼€å¿«æ·æ–¹å¼å±æ€§é¡µæŸ¥çœ‹" << endl;
 
-    if (argv[1] != NULL) //Èç¹ûµ÷ÓÃ³ÌĞòÊ±Î´´«ÈëÍ¼Æ¬Â·¾¶×÷Îª²ÎÊı£¬ÔòÊ¹ÓÃÄ¿±ê³ÌĞò×ÔÉíµÄÍ¼±ê
+    if (argv[1] != NULL) //å¦‚æœè°ƒç”¨ç¨‹åºæ—¶æœªä¼ å…¥å›¾ç‰‡è·¯å¾„ä½œä¸ºå‚æ•°ï¼Œåˆ™ä½¿ç”¨ç›®æ ‡ç¨‹åºè‡ªèº«çš„å›¾æ ‡
     {
         pLink->SetIconLocation(argv[1], 0);
-        cout << "¿ì½İ·½Ê½Í¼Æ¬:" << argv[1] << endl;
+        cout << "å¿«æ·æ–¹å¼å›¾ç‰‡:" << argv[1] << endl;
     }
 
     char dist[100];
-    sprintf(dist, "%s\\%s", desktop_path, "Ğ¡ÀñÎï.lnk");
-    cout << "¿ì½İ·½Ê½¾ø¶ÔÂ·¾¶:" << dist << endl;
-    WCHAR  dist_[MAX_PATH];  //¶¨ÒåUnicode×Ö·û´®
+    sprintf(dist, "%s\\%s", desktop_path, "å°ç¤¼ç‰©.lnk");
+    cout << "å¿«æ·æ–¹å¼ç»å¯¹è·¯å¾„:" << dist << endl;
+    WCHAR  dist_[MAX_PATH];  //å®šä¹‰Unicodeå­—ç¬¦ä¸²
     MultiByteToWideChar(CP_ACP, 0, dist, -1, dist_, MAX_PATH);
     hr = ppf->Save(dist_, TRUE);
-    cout << "\n´´½¨Íê³É\n\n";
+    cout << "\nåˆ›å»ºå®Œæˆ\n\n";
     CoUninitialize();
 
     system("pause");
