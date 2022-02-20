@@ -5,10 +5,10 @@
 #include <audioclient.h>
 
 
-//参数:
-//	-2 恢复静音
-//	-1 静音
-//	0~100:音量比例
+//鍙傛暟:
+//	-2 鎭㈠闈欓煶
+//	-1 闈欓煶
+//	0~100:闊抽噺姣斾緥
 bool SetVolumeLevel(int level)
 {
 	HRESULT hr;
@@ -78,24 +78,6 @@ LPWSTR CharToLPWSTR(const char* c_str)
 
 double GetPlayTime(const char *filename)
 {
-	/*double len = 0.0;
-
-	FILE* fp;
-	fp = fopen(filename, "rb");
-	if (fp != NULL)
-	{
-		int i;
-		int j;
-		fseek(fp, 28, SEEK_SET);
-		fread(&i, sizeof(i), 1, fp);
-		fseek(fp, 40, SEEK_SET);
-		fread(&j, sizeof(j), 1, fp);
-
-		fclose(fp);
-		fp = NULL;
-
-		len = (double)j / (double)i;
-	}*/
 	char buf[16];
 	char msg[MAX_PATH];
 	sprintf_s(msg, "open %s type waveaudio alias wave", filename);
