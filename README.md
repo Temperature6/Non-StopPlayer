@@ -38,6 +38,7 @@ fc
       |--audio.wav
       |--Player.exe
       |--ShortcutCreator.exe
+      |--audio_cfg.txt
  |--src
  |--gift0.ico
  |--FileCopy.exe
