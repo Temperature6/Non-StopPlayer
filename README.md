@@ -65,6 +65,9 @@ FileCopy.exe会将\file目录下的所有文件(不包括文件夹)复制到目�
 cd /d %~dp0
 start "" "FileCopy.exe" .\beast.ico "不要打开我啊"
 ```
+.\beast.ico 是图标文件的路径，不能空
+"不要打开啊" 是创建的快捷方式的名称，不填写则默认为"小礼物"
+
 
 在”audio_cfg.txt"中，应写入统计目录下的一个音频文件的相对路径
 
