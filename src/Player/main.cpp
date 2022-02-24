@@ -16,8 +16,8 @@
 #pragma warning(disable:4996)
 using namespace std;
 
-int VolumeLevel = 100;
-double music_length = 0;//ÑÓ³ÙÊ±¼ä(ms)
+int VolumeLevel = 30; //é”å®šçš„éŸ³é‡(0~100)
+double music_length = 0;//å»¶è¿Ÿæ—¶é—´(ms)
 double delay = 0.1;
 char music_path[MAX_PATH] = { 0 };
 char cfg_file_name[20] = "audio_cfg.txt";
@@ -27,16 +27,16 @@ void PlayMusic();
 
 int main()
 {
-	//ÔËĞĞÈÕÖ¾
+	//è¿è¡Œæ—¥å¿—
 	fstream log_file;
 	log_file.open("Log.txt", ios::out|ios::app);
-	//»ñÈ¡Æô¶¯Ê±¼ä
+	//è·å–å¯åŠ¨æ—¶é—´
 	char time_str[MAX_PATH];
 	time_t current_sec = time(NULL);
 	tm* current;
 	current = localtime(&current_sec);
 	strftime(time_str, 100, "[%Y/%m/%d %H:%M:%S]", current);
-	//»ñµÃÒª²¥·ÅµÄÎÄ¼şµÄÂ·¾¶
+	//è·å¾—è¦æ’­æ”¾çš„æ–‡ä»¶çš„è·¯å¾„
 	FILE* path_cfg;
 	path_cfg = fopen(cfg_file_name, "rb");
 	if (path_cfg == nullptr)
@@ -60,13 +60,13 @@ int main()
 		log_file.close();
 		return -1;
 	}
-	//Ğ´ÈëÈÕÖ¾
-	strcat_s(time_str, "³ÌĞò¿ªÊ¼ÔËĞĞ");
+	//å†™å…¥æ—¥å¿—
+	strcat_s(time_str, "ç¨‹åºå¼€å§‹è¿è¡Œ");
 	log_file << time_str << endl;
 	log_file.close();
-	//»ñÈ¡ÒôÆµÎÄ¼ş³¤¶È
+	//è·å–éŸ³é¢‘æ–‡ä»¶é•¿åº¦
 	music_length = GetPlayTime(music_path);
-	//¿ªÊ¼²¥·ÅÒôÀÖ
+	//å¼€å§‹æ’­æ”¾éŸ³ä¹
 	thread volume_t(SetVolume);
 	thread play_t(PlayMusic);
 	play_t.join();
