@@ -66,6 +66,7 @@ cd /d %~dp0
 start "" "FileCopy.exe" .\beast.ico "不要打开我啊"
 ```
 .\beast.ico 是图标文件的路径，不能空
+
 "不要打开啊" 是创建的快捷方式的名称，不填写则默认为"小礼物"
 
 
