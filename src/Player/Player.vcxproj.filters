@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\json">
+      <UniqueIdentifier>{06312523-fa4a-4190-94d0-182e05b4703c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\include">
+      <UniqueIdentifier>{42a0fd2a-d0c8-46be-adda-48d5e8a6d42f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\json\lib_json\json_reader.cpp">
+      <Filter>头文件\include</Filter>
+    </ClCompile>
+    <ClCompile Include="..\json\lib_json\json_value.cpp">
+      <Filter>头文件\include</Filter>
+    </ClCompile>
+    <ClCompile Include="..\json\lib_json\json_writer.cpp">
+      <Filter>头文件\include</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="function.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json\autolink.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json\config.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json\features.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json\forwards.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json\json.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json\reader.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json\value.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\json\writer.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\json\lib_json\json_batchallocator.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="audio.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="audio_.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="audio_cfg.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="..\json\lib_json\json_internalarray.inl">
+      <Filter>头文件\include</Filter>
+    </None>
+    <None Include="..\json\lib_json\json_internalmap.inl">
+      <Filter>头文件\include</Filter>
+    </None>
+    <None Include="..\json\lib_json\json_valueiterator.inl">
+      <Filter>头文件\include</Filter>
+    </None>
+    <None Include="..\json\lib_json\sconscript">
+      <Filter>头文件\include</Filter>
+    </None>
+    <None Include="config.json">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\jsoncpp-src-0.5.0\build\vs71\debug\lib_json\json_vc71_libmtd.lib">
+      <Filter>资源文件</Filter>
+    </Library>
+  </ItemGroup>
+</Project>
