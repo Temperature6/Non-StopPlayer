@@ -81,7 +81,7 @@ start "" "FileCopy.exe" .\beast.ico "不要打开我啊"
 
 ### 播放设置
 
-Player.exe运行时，会解析“config.json”中的内容其中包含音频文件路径和音量
+Player.exe运行时，会解析“config.json”中的内容其中包含音频文件路径、音量、声音调整间隔
 
 音频文件最好在Player.exe的同一目录下，方便使用FileCopy.exe进行部署
 
