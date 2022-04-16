@@ -83,11 +83,15 @@ start "" "FileCopy.exe" .\beast.ico "不要打开我啊"
 
 使用中文时最后加上双引号“”
 
+如果使用"install.bat"出现参数乱码的情况，右键“install.bat”-编辑(然后就用记事本打开了)-文件-另存为-把编码改成“ANSI”，再另存为到原来的位置就行了
+
 ### 播放设置
 
 ！！请务必使用.wav文件！！
 
 Player.exe运行时，会解析“config.json”中的内容其中包含音频文件路径、音量、声音调整间隔，是否循环播放
+
+没有打开json文件的软件的同学可以将config.json拖到“OpenWithNotepad.bat”上然后松手，就可以用记事本打开然后编辑了
 
 Path：音频文件路径
 Volume：锁定的音量（0~100,请适当调整）
