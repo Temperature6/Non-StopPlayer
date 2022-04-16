@@ -14,8 +14,8 @@
 #pragma warning(disable:4996)
 using namespace std;
 
-string default_path = "C:\\Non-StopPlayer"; //Òª¸´ÖÆµ½µÄÎÄ¼şÄ¬ÈÏÂ·¾¶,Êµ¼ÊÔËĞĞÊ±ĞèÒª¶ÁÈ¡¡°setting.txt¡±
-char _src_dir[20] = "file\\"; //Òª¸´ÖÆµÄÎÄ¼şµÄÎÄ¼ş¼Ğ(ÒÔ¡°\\¡±½áÎ²)
+string default_path = "C:\\Non-StopPlayer"; //è¦å¤åˆ¶åˆ°çš„æ–‡ä»¶é»˜è®¤è·¯å¾„,å®é™…è¿è¡Œæ—¶éœ€è¦è¯»å–â€œsetting.txtâ€
+char _src_dir[20] = "file\\"; //è¦å¤åˆ¶çš„æ–‡ä»¶çš„æ–‡ä»¶å¤¹(ä»¥â€œ\\â€ç»“å°¾)
 char temp[200] = "";
 char linkname[20] = "name";
 
@@ -31,35 +31,35 @@ int main(int argc, char* argv[])
     {
         memcpy(linkname, argv[2], 20);
     }
-    strcat(linkname, ".lnk"); //Æ´½Ó¿ì½İ·½Ê½ºó×º
-    //¶ÁÈ¡Ä¬ÈÏÄ¿Â¼ÉèÖÃ
+    strcat(linkname, ".lnk"); //æ‹¼æ¥å¿«æ·æ–¹å¼åç¼€
+    //è¯»å–é»˜è®¤ç›®å½•è®¾ç½®
     std::ifstream setting_file;
     setting_file.open("setting.txt");
     if (!setting_file)
     {
-        printf("Ã»ÓĞÕÒµ½ \"setting.txt\" ½«Ê¹ÓÃÄ¬ÈÏÂ·¾¶%s\n", default_path.c_str());
+        printf("æ²¡æœ‰æ‰¾åˆ° \"setting.txt\" å°†ä½¿ç”¨é»˜è®¤è·¯å¾„%s\n", default_path.c_str());
     }
     else
     {
         setting_file.read(temp, 100);
         default_path = temp;
     }
-    //´´½¨Ä¿Â¼
+    //åˆ›å»ºç›®å½•
     if (!PathFileExists(default_path.c_str()))
     {
         CreateDirectory(default_path.c_str(), NULL);
     }
-    //±éÀúÎÄ¼şÄ¿Â¼
+    //éå†æ–‡ä»¶ç›®å½•
     string src_dir = _src_dir;
     intptr_t handle;
     _finddata_t data;
     strcat(_src_dir, "\\*.*");
-    handle = _findfirst(_src_dir, &data); // Ñ°ÕÒµÚÒ»¸öÎÄ¼ş
+    handle = _findfirst(_src_dir, &data); // å¯»æ‰¾ç¬¬ä¸€ä¸ªæ–‡ä»¶
 
     string dst_file;
     if (handle == -1)
     {
-        std::cout << "Ô´Ä¿Â¼Îª¿Õ" << std::endl;
+        std::cout << "æºç›®å½•ä¸ºç©º" << std::endl;
         system("pause");
         exit(-1);
     }
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
             }
             else if (data.attrib == _A_SUBDIR)
             {
-                printf("ÕÒµ½×ÓÄ¿Â¼:%s|Ìø¹ı\n", data.name);
+                printf("æ‰¾åˆ°å­ç›®å½•:%s|è·³è¿‡\n", data.name);
                 continue;
             }
             else
@@ -82,13 +82,13 @@ int main(int argc, char* argv[])
                 string file_name = data.name;
                 string t_src_file = src_dir + (string)data.name;
                 dst_file = dst_file + "\\" + file_name;
-                printf("ÕÒµ½ÎÄ¼ş:%s\n¸´ÖÆµ½:%s\n", t_src_file.c_str(), dst_file.c_str());
+                printf("æ‰¾åˆ°æ–‡ä»¶:%s\nå¤åˆ¶åˆ°:%s\n", t_src_file.c_str(), dst_file.c_str());
                 CopyFile(t_src_file.c_str(), dst_file.c_str(), false);
             }
         }
     }
 
-    //´¦ÀíÆäËûÎÄ¼ş
+    //å¤„ç†å…¶ä»–æ–‡ä»¶
     string shortcutFile = default_path + "\\ShortcutCreator.exe";
     string srcIcon = argv[1];
     string Icon_name;
@@ -107,12 +107,12 @@ int main(int argc, char* argv[])
     }
     if (!slash_found)
     {
-        Icon_name = srcIcon; //Í¼±êÎÄ¼şÎªÏà¶ÔÂ·¾¶
+        Icon_name = srcIcon; //å›¾æ ‡æ–‡ä»¶ä¸ºç›¸å¯¹è·¯å¾„
     }
     string iconFile = default_path + "\\" + Icon_name;
     CopyFile(srcIcon.c_str(), iconFile.c_str(), false);
-    //µ÷ÓÃÃüÁî´´½¨¿ì½İ·½Ê½
-    printf("\nµ÷ÓÃÍâ²¿³ÌĞò´´½¨¿ì½İ·½Ê½...\n");
+    //è°ƒç”¨å‘½ä»¤åˆ›å»ºå¿«æ·æ–¹å¼
+    printf("\nè°ƒç”¨å¤–éƒ¨ç¨‹åºåˆ›å»ºå¿«æ·æ–¹å¼...\n");
     string cmd = shortcutFile + " " + iconFile + " " + linkname;
     char cmd_[MAX_PATH] = "";
     memcpy(cmd_, cmd.c_str(), cmd.length());
@@ -122,6 +122,6 @@ int main(int argc, char* argv[])
         cmd_[k] = cmd[k];
     }*/
     system(cmd_);
-    system("pause");
+    //system("pause");
     return 0;
 }
